@@ -26,7 +26,7 @@ class ViewModel {
     }
     
     func initPhonePeSDK(merchantId: String, enviroment: Environment) {
-        ppPayment = PPPayment(environment: enviroment, flowId: UUID().uuidString, merchantId: merchantId)
+        ppPayment = PPPayment(environment: enviroment, flowId: UUID().uuidString, merchantId: merchantId, enableLogging: true)
         viewController?.printResult("SDK INIT - TRUE")
     }
     
