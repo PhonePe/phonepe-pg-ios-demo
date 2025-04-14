@@ -52,13 +52,7 @@ class ViewModel {
     
     func pay(instrument: Instrument, merchantId: String, token: String, controller: UIViewController) {
         
-        let intentMode: PPEIntentPaymentMode
-        
-        if instrument.type == "UPI_ACCOUNT" {
-            intentMode = .init(accountId: instrument.accountId.emptyIfNil)
-        } else {
-            intentMode = .init(oneClickPay: true)
-        }
+        let intentMode: PPEIntentPaymentMode = .init(type: instrument.type, id: instrument.id)
         
         let request = B2BPGTransactionRequest(merchantId: merchantId, orderId: UUID().uuidString, token: token, appSchema: "PhonePePaymentDemo", paymentMode: .ppeIntent(request: intentMode))
         
